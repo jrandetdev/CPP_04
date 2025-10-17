@@ -3,6 +3,7 @@
 Cat::Cat() : Animal()
 {
 	type = "Cat";
+	
 	std::cout << "Cat:: Derived class default constructor called" << '\n';
 }
 
