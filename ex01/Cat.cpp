@@ -3,7 +3,7 @@
 Cat::Cat() : Animal()
 {
 	type = "Cat";
-	
+	cat_brain = new Brain();
 	std::cout << "Cat:: Derived class default constructor called" << '\n';
 }
 
@@ -24,6 +24,7 @@ Cat& Cat::operator=(const Cat& other)
 
 Cat::~Cat()
 {
+	delete cat_brain;
 	std::cout << "Cat:: Derived class default destructor called" << '\n';
 }
 

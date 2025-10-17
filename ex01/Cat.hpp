@@ -1,8 +1,9 @@
 #include "Animal.hpp"
+#include "Brain.hpp"
 #include <iostream>
 #include <string>
 
-class Cat : public Animal, public Brain
+class Cat : public Animal
 {
 	private:
 		Brain *cat_brain;
@@ -12,4 +13,6 @@ class Cat : public Animal, public Brain
 		Cat& operator=(const Cat& other);
 		~Cat();
 		void makeSound(void) const;
+		// const std::string getCatIdea(void);
+		// void setCatIdea(const std::string idea);
 } ;

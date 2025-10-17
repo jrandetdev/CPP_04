@@ -3,6 +3,7 @@
 Dog::Dog() : Animal()
 {
 	type = "Dog";
+	dog_brain = new Brain();
 	std::cout << "Dog:: Derived class default constructor called" << '\n';
 }
 
@@ -23,6 +24,7 @@ Dog& Dog::operator=(const Dog& other)
 
 Dog::~Dog()
 {
+	delete dog_brain;
 	std::cout << "Dog:: Derived class default destructor called" << '\n';
 }
 
