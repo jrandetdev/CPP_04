@@ -7,7 +7,7 @@ Animal::Animal()
 
 Animal::Animal(const Animal& other) : type(other.type)
 {
-	std::cout << GREEN << "Animal:: Copy constructor called" << RESET << '\n';
+	std::cout << GREEN << "A_Animal:: Copy constructor called" << RESET << '\n';
 }
 
 Animal& Animal::operator=(const Animal& other)
