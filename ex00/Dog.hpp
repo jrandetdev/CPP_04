@@ -1,5 +1,7 @@
 #include "Animal.hpp"
 
+// Derived class from Animal the Dog inherits of all the attributes
+// of its base class Animal.
 class Dog : public Animal
 {
 	private:

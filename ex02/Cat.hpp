@@ -3,6 +3,10 @@
 #include <iostream>
 #include <string>
 
+/**
+ * Cat anbd Dog have private attributes which is a pointer to Brain
+ * 
+ */
 class Cat : public Animal
 {
 	private:
@@ -13,6 +17,4 @@ class Cat : public Animal
 		Cat& operator=(const Cat& other);
 		~Cat();
 		void makeSound(void) const;
-		// const std::string getCatIdea(void);
-		// void setCatIdea(const std::string idea);
 } ;

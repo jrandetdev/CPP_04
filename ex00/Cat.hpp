@@ -2,6 +2,8 @@
 #include <iostream>
 #include <string>
 
+// Derived class from Animal the Cat inherits of all the attributes
+// of its base class Animal.
 class Cat : public Animal
 {
 	private:

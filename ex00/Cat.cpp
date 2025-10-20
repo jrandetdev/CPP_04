@@ -3,12 +3,12 @@
 Cat::Cat() : Animal()
 {
 	type = "Cat";
-	std::cout << "Cat:: Derived class default constructor called" << '\n';
+	std::cout << GREEN << "Cat:: Derived class default constructor called" << RESET << '\n';
 }
 
 Cat::Cat(const Cat& other) : Animal(other)
 {
-	std::cout << "Cat:: Derived class copy constructor called" << '\n';
+	std::cout << GREEN << "Cat:: Derived class copy constructor called" << RESET << '\n';
 }
 
 Cat& Cat::operator=(const Cat& other)
@@ -23,10 +23,10 @@ Cat& Cat::operator=(const Cat& other)
 
 Cat::~Cat()
 {
-	std::cout << "Cat:: Derived class default destructor called" << '\n';
+	std::cout << RED << "Cat:: Derived class default destructor called" << RESET << '\n';
 }
 
 void	Cat::makeSound(void) const
 {
-	std::cout << "Miaou" << '\n';
+	std::cout << GREEN << "Miaou" << RESET << '\n';
 }

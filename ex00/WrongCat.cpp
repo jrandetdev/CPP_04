@@ -28,6 +28,6 @@ WrongCat::~WrongCat()
 
 void	WrongCat::makeSound(void) const
 {
-	std::cout << "Miaou" << '\n';
+	std::cout << GREEN << "Miaou" << RESET << '\n';
 }
 

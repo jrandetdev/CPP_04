@@ -1,6 +1,4 @@
 #include "Animal.hpp"
-#include "WrongAnimal.hpp"
-#include "WrongCat.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
 
@@ -34,6 +32,9 @@
 int main()
 {
 	{
+		// Here this test was given to me by the subject.
+		// We can already see that the base pointer and the Dog pointer are type compatible
+
 		std::cout << "TEST 1" << '\n';
 		const Animal*	j = new Dog();
 		const Animal*	i = new Cat();
@@ -43,6 +44,13 @@ int main()
 	}
 	std::cout << '\n';
 	{
+		/*
+			Now we need to use a container, in this case the array. When we do this, 
+			we need to use pointers to store objects of different derived types
+			without worrying about object slicing. The dynamic memory allocation 
+			ensures that the full object, including its derived type-specific data and
+			bahaviour are preserved. 
+		*/
 		std::cout << "TEST 2" << '\n';
 		const int n = 10;
 		Animal *dogs_and_cats[n]; //tableau de pointeur de classe (obligee)
@@ -65,10 +73,36 @@ int main()
 			dogs_and_cats[i]->makeSound();
 		}
 		
+		// I need to delete the pointers within the array of pointers of objects
 		for (size_t i = 0; i < n; ++i)
 		{
 			delete dogs_and_cats[i];
 		}
+	}
+	std::cout << '\n';
+	{
+		Dog dog_1;
+		Dog dog_2;
+		Cat cat_1;
+		Cat cat_2;
+
+		Animal *pets[4] = {&dog_1, &dog_2, &cat_1, &cat_2};
+
+		std::cout << "---Making the pets bark or miaow---" << std::endl;
+		for (int i = 0; i < 4; ++i)
+		{
+			pets[i]->makeSound();
+		}
+		
+		// for (size_t i = 0; i < 4; ++i)
+		// {
+		// 	delete pets[i];
+		// }
+	}
+	{
+		//test to see how an abstract class Animal CANNOT be instantiated
+		//object of abstract class type "Animal" is not allowed:C/C++(322)
+		//Animal tests_that_wont_work;
 	}
 	
 }

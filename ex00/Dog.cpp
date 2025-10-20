@@ -3,7 +3,7 @@
 Dog::Dog() : Animal()
 {
 	type = "Dog";
-	std::cout << "Dog:: Derived class default constructor called" << '\n';
+	std::cout << GREEN << "Dog:: Derived class default constructor called" << RESET << '\n';
 }
 
 Dog::Dog(const Dog& other) : Animal(other)
@@ -16,17 +16,17 @@ Dog& Dog::operator=(const Dog& other)
 	if (this != &other)
 	{
 		Animal::operator=(other);
-		std::cout << "Dog:: Derived class copy assignment called" << '\n';
+		std::cout << RED << "Dog:: Derived class copy assignment called" << RESET << '\n';
 	}
 	return (*this);
 }
 
 Dog::~Dog()
 {
-	std::cout << "Dog:: Derived class default destructor called" << '\n';
+	std::cout << RED << "Dog:: Derived class default destructor called" << RESET << '\n';
 }
 
 void	Dog::makeSound(void) const
 {
-	std::cout << "Wouf" << '\n';
+	std::cout << BLUE << "Wouf" <<  RESET << '\n';
 }

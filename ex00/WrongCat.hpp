@@ -2,7 +2,6 @@
 #include <iostream>
 #include <string>
 
-
 /**
  * @brief
  * 
@@ -17,5 +16,6 @@ class WrongCat : public WrongAnimal
 		WrongCat(const WrongCat& other);
 		WrongCat& operator=(const WrongCat& other);
 		~WrongCat();
+		//It does define the makesound function, but its not virtual in the baseclass!
 		void makeSound(void) const;
 } ;
