@@ -7,7 +7,7 @@
  * Cat anbd Dog have private attributes which is a pointer to Brain
  * 
  */
-class Cat : public Animal
+class Cat : public A_Animal
 {
 	private:
 		Brain *cat_brain;

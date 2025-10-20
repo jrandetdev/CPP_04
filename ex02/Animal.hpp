@@ -12,7 +12,7 @@
 
 /**
  * @Brief
- * @param base class Animal contains pure virual functions =0 and the functions have no body
+ * @param base class A_Animal contains pure virual functions =0 and the functions have no body
  * The pure virtual functions are overridden in derived classes. A class with such a  
  * function is called an abstract class abd ut cannot be instantiated. 
  * 
@@ -26,17 +26,17 @@
  * 
  * This class is literally an interface.
  */
-class Animal{
+class A_Animal{
 	protected:
 		std::string type;
 	public:
-		Animal();
-		Animal(const Animal& other);
-		Animal& operator=(const Animal& other);
+		A_Animal();
+		A_Animal(const A_Animal& other);
+		A_Animal& operator=(const A_Animal& other);
 		// Pure virtual function
 		virtual void makeSound(void) const = 0;
 		// Pure virtual destructor
-		virtual ~Animal() = 0;
+		virtual ~A_Animal() = 0;
 		const std::string& getType(void) const;
 		void	setType(const std::string& type);
 };

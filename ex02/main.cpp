@@ -36,8 +36,8 @@ int main()
 		// We can already see that the base pointer and the Dog pointer are type compatible
 
 		std::cout << "TEST 1" << '\n';
-		const Animal*	j = new Dog();
-		const Animal*	i = new Cat();
+		const A_Animal*	j = new Dog();
+		const A_Animal*	i = new Cat();
 
 		delete j;
 		delete i;
@@ -46,17 +46,17 @@ int main()
 	{
 		/*
 			Now we need to use a container, in this case the array. When we do this, 
-			we need to use pointers to store objects of different derived types
+			we can use pointers to store objects of different derived types
 			without worrying about object slicing. The dynamic memory allocation 
 			ensures that the full object, including its derived type-specific data and
 			bahaviour are preserved. 
 		*/
 		std::cout << "TEST 2" << '\n';
 		const int n = 10;
-		Animal *dogs_and_cats[n]; //tableau de pointeur de classe (obligee)
+		A_Animal *dogs_and_cats[n]; //tableau de pointeur de classe (obligee)
 
 		std::cout << '\n';
-		std::cout << "allocating the array of animals...." << '\n';
+		std::cout << "allocating the array of A_Animals pointers...." << '\n';
 		for (size_t i = 0; i < n; ++i)
 		{
 			if (i < (n / 2))
@@ -69,7 +69,7 @@ int main()
 		std::cout << "getting types and debugging...." << '\n';
 		for (size_t i = 0; i < n; ++i)
 		{
-			std::cout << "Type of first animal is " << dogs_and_cats[i]->getType() << '\n';
+			std::cout << "Type of first A_Animal is " << dogs_and_cats[i]->getType() << '\n';
 			dogs_and_cats[i]->makeSound();
 		}
 		
@@ -81,12 +81,13 @@ int main()
 	}
 	std::cout << '\n';
 	{
+		// Test with stack allocated variables, no delete needed
 		Dog dog_1;
 		Dog dog_2;
 		Cat cat_1;
 		Cat cat_2;
 
-		Animal *pets[4] = {&dog_1, &dog_2, &cat_1, &cat_2};
+		A_Animal *pets[4] = {&dog_1, &dog_2, &cat_1, &cat_2};
 
 		std::cout << "---Making the pets bark or miaow---" << std::endl;
 		for (int i = 0; i < 4; ++i)
@@ -97,12 +98,12 @@ int main()
 		// for (size_t i = 0; i < 4; ++i)
 		// {
 		// 	delete pets[i];
-		// }
+		// } no need to delete as we are allocating on the stack
 	}
 	{
-		//test to see how an abstract class Animal CANNOT be instantiated
-		//object of abstract class type "Animal" is not allowed:C/C++(322)
-		//Animal tests_that_wont_work;
+		//test to see how an abstract class A_Animal CANNOT be instantiated
+		//object of abstract class type "A_Animal" is not allowed:C/C++(322)
+		//A_Animal tests_that_wont_work;
 	}
 	
 }

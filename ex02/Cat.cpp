@@ -1,13 +1,13 @@
 #include "Cat.hpp"
 
-Cat::Cat() : Animal()
+Cat::Cat() : A_Animal()
 {
 	type = "Cat";
 	cat_brain = new Brain();
 	std::cout << "Cat:: Derived class default constructor called" << '\n';
 }
 
-Cat::Cat(const Cat& other) : Animal(other)
+Cat::Cat(const Cat& other) : A_Animal(other)
 {
 	std::cout << "Cat:: Derived class copy constructor called" << '\n';
 }
@@ -16,7 +16,7 @@ Cat& Cat::operator=(const Cat& other)
 {
 	if (this != &other)
 	{
-		Animal::operator=(other);
+		A_Animal::operator=(other);
 		std::cout << "Cat:: Derived class copy assignment called" << '\n';
 	}
 	return (*this);

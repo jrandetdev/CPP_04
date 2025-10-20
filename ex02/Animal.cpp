@@ -1,16 +1,16 @@
 #include "Animal.hpp"
 
-Animal::Animal()
+A_Animal::A_Animal()
 {
-	std::cout << GREEN << "Animal:: Default constructor called" << RESET << '\n';
+	std::cout << GREEN << "A_Animal:: Default constructor called" << RESET << '\n';
 }
 
-Animal::Animal(const Animal& other) : type(other.type)
+A_Animal::A_Animal(const A_Animal& other) : type(other.type)
 {
-	std::cout << GREEN << "Animal:: Copy constructor called" << RESET << '\n';
+	std::cout << GREEN << "A_Animal:: Copy constructor called" << RESET << '\n';
 }
 
-Animal& Animal::operator=(const Animal& other)
+A_Animal& A_Animal::operator=(const A_Animal& other)
 {
 	if (this != &other)
 	{
@@ -19,17 +19,17 @@ Animal& Animal::operator=(const Animal& other)
 	return (*this);
 }
 
-Animal::~Animal()
+A_Animal::~A_Animal()
 {
-	std::cout << RED << "Animal:: Default destructor called" << RESET << '\n';
+	std::cout << RED << "A_Animal:: Default destructor called" << RESET << '\n';
 }
 
-const std::string& Animal::getType(void) const
+const std::string& A_Animal::getType(void) const
 {
 	return (this->type);
 }
 
-void	Animal::setType(const std::string& type)
+void	A_Animal::setType(const std::string& type)
 {
 	this->type = type;
 }
