@@ -26,12 +26,12 @@ AMateria& AMateria::operator=(const AMateria& other)
 	return (*this);
 }
 
-AMateria* AMateria::clone() const
+void	AMateria::use(ICharacter& target)
 {
 	
 }
 
-AMateria::~AMateria()
+AMateria::~AMateria();
 {
 	std::cout << RED << "AMateria:: default destructor called" << RESET << '\n';
 }

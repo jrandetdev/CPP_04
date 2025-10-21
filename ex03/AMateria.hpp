@@ -3,6 +3,7 @@
 
 #include <iostream> 
 #include <string>
+#include "ICharacter.hpp"
 
 #define RED     "\033[31m"      /* Red */
 #define GREEN   "\033[32m"      /* Green */
@@ -17,16 +18,16 @@ class AMateria
 		std::string type;
 	public:
 		AMateria();
-		AMateria(std::string const & type);
+		AMateria(std::string const & type); // sets the type of Materia
 		AMateria(const AMateria& other);
 		AMateria& operator=(const AMateria& other);
 
 		std::string const & getType() const; // Returns the materia type
-		void	setType(std::string const type);
+		//void	setType(std::string const type);
 
 		virtual AMateria* AMateria::clone() const = 0;
 		virtual void use(ICharacter& target);
-		
+
 		virtual ~AMateria() = 0;
 };
 
