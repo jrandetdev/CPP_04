@@ -17,7 +17,16 @@ class Character : public ICharacter
 	 * use/unequip a non-existent Materia, nothing should happen
 	 * (the cases still need to be handled).
 	 */
-		AMateria *inventory[4];
-		
-
+		AMateria *inventory[4]; // pointer to pointer of materia 
+		std::string const name;
+	public:
+		Character();
+		Character(std::string& const name);
+		Character(const Character& other);
+		Character& operator=(const Character& other);
+		~Character();
+		std::string const & getName() const;
+		void equip(AMateria* m);
+		void unequip(int idx); // will use the idex of the inventory
+		void use(int idx, ICharacter& target);
 }

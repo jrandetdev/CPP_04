@@ -2,6 +2,7 @@
 
 AMateria::AMateria()
 {
+	type = "";
 	std::cout << GREEN << "AMateria:: Default constructor called" << RESET << std::endl;
 }
 
@@ -21,7 +22,7 @@ AMateria& AMateria::operator=(const AMateria& other)
 {
 	if (this != &other)
 	{
-		this->type = other.type;
+		//it says that copying the type does not make sense
 	}
 	return (*this);
 }
