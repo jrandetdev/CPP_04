@@ -18,7 +18,7 @@ class Character : public ICharacter
 	 * (the cases still need to be handled).
 	 */
 		AMateria *inventory[4]; // pointer to pointer of materia 
-		std::string const name;
+		std::string name;
 	public:
 		Character();
 		Character(std::string& const name);

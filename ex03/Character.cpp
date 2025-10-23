@@ -1,9 +1,11 @@
 #include "Character.hpp"
 
+//you cannot instantiate or implement it withut instructions #
+// If I did inventory = new AMateria[4] it would block 
 Character::Character() : ICharacter()
 {
 	//how the fuck do I allocate this array 
-	
+	inventory = new AMateria[4];
 	std::cout << "Character:: Default character called" << std::endl;
 }
 
@@ -19,6 +21,7 @@ Character::Character(const Character& other)
 	//means we need to have a separate memory space or 
 	// pointer for the other memory.
 	//another name as well. 
+	
 
 
 }
