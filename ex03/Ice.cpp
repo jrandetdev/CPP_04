@@ -1,6 +1,6 @@
 #include "Ice.hpp"
 
-Ice::Ice()
+Ice::Ice() : AMateria()
 {
 	std::cout << "Ice:: Default constructor called" << std::endl;
 }
@@ -17,6 +17,17 @@ Ice& Ice::operator=(const Ice& other)
 
 	}
 	return (*this);
+}
+
+/**
+ * @brief
+ * 
+ * @return pointer on Amateria 
+ * @
+ */
+AMateria* Ice::clone() const
+{
+	
 }
 
 Ice::~Ice()

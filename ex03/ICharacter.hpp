@@ -4,8 +4,7 @@
 #include "AMateria.hpp"
 
 /**
- * Concrete class character will inherit the following interface
- * This is an abstract class. All functions are pure virtual functions.
+ * @brief 
  */
 class ICharacter
 {

@@ -4,30 +4,45 @@
 
 
 /**
- * @brief 
- * @param Animal is the base class.
- * @param Dog and @param Cat are derived classes.
- * Cat and dog have a pointer to a @param Brain object (see Brain.hpp) as their
- * private attribute.
- * Upon construction, Cat and Dog will create their Brain using new Brain();
- * Upon destruction, Cat and Dog will delete their Brain.
+ * @brief Demonstrates polymorphism, abatract classes, and dynamic memory allocation.
  * 
- * @param dogs_and_cats is an arrray of @class Animal objects. Half of it
- * is composed of Dog @class objects, and the other half will be Cat @class objects
- * The base type of Dog and Cat is an Animal. 
- * if it was an array of animals, then I would need only animal objects.
- * It needs to be an array of pointers to its derived objects so that 
+ * KEY CONECPTS DEMONSTRATED:
  * 
+ * 1. Polymorphism and inheritance
  * 
- * Polymorphism with a base class and derived classes 
- * 1. create the mold of base class to sstocl the different types of the same type Animal
- * 2. I need to create an array of pointers of type Animal 
+ * 		- A_Animal is an abstracr class (interface)
  * 
- * this works because a pointer to thew base class and a pointer to the $
- * derived class are type compatible
+ * 		- Dog and Cat are concrete derived class of Animal.
  * 
- * A pointer to a derived class is a pointer of a base class pointing to a derived class but
- * it will hold its aspect
+ * 		- major learning: the Base class pointer can be used to access derived class
+ * 		with virtual member functions. Mapping of all the virtual functions with the
+ * 		vtable and vptr. Even if we use the Base pointer, the correct version of 
+ * 		the object is used.
+ * 
+ * 2. Composition:
+ * 
+ * 		- Each animal contains a brain
+ * 
+ * 		- The brain is dynamically allocated during construction and deleted
+ * 		during destruction assuring good memory management. 
+ * 
+ * 3. Dynamic polymorphism:
+ * 
+ * 		- Virtual functions enable runtime polymorphism
+ * 
+ * 		- makesound() behaviour depends on the actual object type
+ * 
+ * 		- When using polymorphism, virtual destructor must systematically 
+ * 		be used for proper cleanup of resources. 
+ * 
+ * 4. Prevention of object slicing
+ * 		- Allocation of the base class avoids slicing of the object and access
+ * 		to the derived objects allocated on the heap
+ * 
+ * FINAL LEARNING:
+ * 		- Animal dogs_and_cats[10] would cause object slicing and losing the derived data.
+ * 		- Animal *dogs_and_cats[10] preserves complete derived objects
+ * 		- Type compatibility: Cats and Dogs are both Animals*
  */
 int main()
 {
@@ -44,13 +59,7 @@ int main()
 	}
 	std::cout << '\n';
 	{
-		/*
-			Now we need to use a container, in this case the array. When we do this, 
-			we can use pointers to store objects of different derived types
-			without worrying about object slicing. The dynamic memory allocation 
-			ensures that the full object, including its derived type-specific data and
-			bahaviour are preserved. 
-		*/
+
 		std::cout << "TEST 2" << '\n';
 		const int n = 10;
 		A_Animal *dogs_and_cats[n]; //tableau de pointeur de classe (obligee)

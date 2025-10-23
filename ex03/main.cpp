@@ -8,5 +8,5 @@
  */
 int main()
 {
-	
+	AMateria *test = new Ice();
 }

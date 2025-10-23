@@ -1,6 +1,12 @@
 #include "Cure.hpp"
 
-Cure::Cure()
+/**
+ * @brief Cure default constructor is derived from the AMateria class.
+ * 
+ * It needs to construct the AMateria base first, so it has access to the 
+ * AMateria class attributed
+ */
+Cure::Cure() : AMateria()
 {
 	std::cout << "Cure:: Default constructor called" << std::endl;
 }
@@ -22,4 +28,9 @@ Cure& Cure::operator=(const Cure& other)
 Cure::~Cure()
 {
 	std::cout << "Cure:: Default destructor called" << std::endl;
+}
+
+void	Cure::use(ICharacter& target)
+{
+	std::cout << "* heals " << target.name << "'s wounds *" << std::endl;
 }

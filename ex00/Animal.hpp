@@ -12,7 +12,7 @@
 
 /**
  * @class Animal
- * @brief Abstract base class represemtomg a generic animal.
+ * @brief Abstract base class representing a generic animal.
  * 
  * The animal class serves as a polymorphic base for a hierarchy of animal 
  * types. It provides a common interface through virtual functions and manages
@@ -47,13 +47,16 @@ class Animal{
 		 * 
 		 * @param other Animal to copy from.
 		 * @post Makes a completely independant copy
-		 * 
 		 */
 		Animal(const Animal& other);
 		Animal& operator=(const Animal& other);
-		//making the destuctor virtual ensures that the most derived version is 
-		// destryed first
 		virtual ~Animal();
+		/**
+		 * @brief Virtual member function of the base class Animal.
+		 * 
+		 * The makesound() is a virtual function and needs to be overridden by Animal's 
+		 * derived classes Cat and Dog. It should not modify the instance of the class.
+		 */
 		virtual void makeSound(void) const;
 		const std::string& getType(void) const;
 		void	setType(const std::string& type);
