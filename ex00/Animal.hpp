@@ -11,26 +11,44 @@
 #define MAG		"\033[35m"
 
 /**
- * This is the base class Animal. All the derived classes 
- * wil have access to its public and protected members but 
- * not its private members. 
+ * @class Animal
+ * @brief Abstract base class represemtomg a generic animal.
  * 
- * The goal of this exercise is for instances of the derived animal class
- * to call the appropriate function and not the generic sound made by the 
- * base class. When executed, a virtual function executes the most 
- * derived version of that function. If it does not make sense to 
- * implement a function in the base class cpp file, we will mark
- * the virtual functions ad pure virtual function with the =0
- * meaning it has no implementation. 
+ * The animal class serves as a polymorphic base for a hierarchy of animal 
+ * types. It provides a common interface through virtual functions and manages
+ * the animal's type iodentification through a protected member accessible 
+ * to derived classes.
+ *
+ * @details
+ * This class demonstrates several C++ concepts:
+ * - Virtual functions and runtime polymorphism 
+ * - Protected members for controlled inheritance (only derived functions have access)
+ * - The use of the canonical form
+ * - Virtual function for the destuctor for proper cleanup of resources
  * 
- * this is see in the ex02 :)
+ * Derived classes should:
+ * - Call the base constructor of the Animal class (base of the derived class)
+ * - Override the makesound function to provide animal type specific behaviour
+ * - Set the type of the animal in the constructor.
+ * 
+ * @see Cat, Dog
  */
 class Animal{
 	protected:
-		// type is private and is only visible to the class members
 		std::string type;
 	public:
 		Animal();
+
+		/**
+		 * @brief copy constructor
+		 * 
+		 * Creates a deep copy of another Animal object. Copies the type string from 
+		 * the source object.
+		 * 
+		 * @param other Animal to copy from.
+		 * @post Makes a completely independant copy
+		 * 
+		 */
 		Animal(const Animal& other);
 		Animal& operator=(const Animal& other);
 		//making the destuctor virtual ensures that the most derived version is 

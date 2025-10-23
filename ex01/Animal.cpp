@@ -2,12 +2,12 @@
 
 Animal::Animal()
 {
-	std::cout << GREEN << "Animal:: Default constructor called" << RESET << '\n';
+	std::cout << "Animal:: Default constructor called" << '\n';
 }
 
 Animal::Animal(const Animal& other) : type(other.type)
 {
-	std::cout << GREEN << "Animal:: Copy constructor called" << RESET << '\n';
+	std::cout << "Animal:: Copy constructor called" << '\n';
 }
 
 Animal& Animal::operator=(const Animal& other)
@@ -21,7 +21,7 @@ Animal& Animal::operator=(const Animal& other)
 
 Animal::~Animal()
 {
-	std::cout << RED << "Animal:: Default destructor called" << RESET << '\n';
+	std::cout << "Animal:: Default destructor called" << '\n';
 }
 
 void	Animal::makeSound(void) const
@@ -38,4 +38,3 @@ void	Animal::setType(const std::string& type)
 {
 	this->type = type;
 }
-
