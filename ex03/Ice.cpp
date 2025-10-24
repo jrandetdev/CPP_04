@@ -5,36 +5,33 @@ Ice::Ice() : AMateria()
 	std::cout << "Ice:: Default constructor called" << std::endl;
 }
 
-Ice::Ice(const Ice& other)
+// Start by creating the base class of Ice (AMateria)
+Ice::Ice(const Ice& other) : AMateria("ice")
 {
+	(void)other;
 	std::cout << "Ice:: Copy constructor called" << std::endl;
 }
 
 Ice& Ice::operator=(const Ice& other)
 {
+	if (this != &other) // Protect against invalid self-assignment 
 	{
-		this->type = other.type;
+		AMateria::operator=(other);
 	}
 	return (*this);
-}
-
-/**
- * @brief
- * 
- * @return pointer on Amateria 
- * @
- */
-AMateria* Ice::clone() const
-{
-	
-}
-
-void Ice::use(ICharacter& target)
-{
-	std::cout << "* shoots an ice bolt at " << target.name << " *" << std::endl;
 }
 
 Ice::~Ice()
 {
 	std::cout << "Ice:: Default destructor called" << std::endl;
+}
+
+Ice* Ice::clone() const
+{
+	return new Ice{*this};
+}
+
+void Ice::use(ICharacter& target)
+{
+	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
 }

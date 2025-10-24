@@ -4,8 +4,10 @@
 // If I did inventory = new AMateria[4] it would block 
 Character::Character() : ICharacter()
 {
-	//how the fuck do I allocate this array 
-	inventory = new AMateria[4];
+	for (int i = 0; i < 4; ++i)
+	{
+		inventory[i] = NULL;
+	}
 	std::cout << "Character:: Default character called" << std::endl;
 }
 
@@ -44,6 +46,9 @@ std::string const & Character::getName() const
 
 void Character::equip(AMateria* m)
 {
+	//checks to do: if valie materia pointer,
+	// if available space
+	// 
 	//equip you need to see if there is still space
 	//how to check if there is space?
 

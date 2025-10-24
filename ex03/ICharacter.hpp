@@ -4,7 +4,8 @@
 #include "AMateria.hpp"
 
 /**
- * @brief 
+ * @brief contract with the derived classes that they need 
+ * to implement the definitions below.
  */
 class ICharacter
 {
