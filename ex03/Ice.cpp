@@ -28,7 +28,7 @@ Ice::~Ice()
 
 Ice* Ice::clone() const
 {
-	return new Ice{*this};
+	return new Ice(*this); // copy constructor using the instance obtained through dereference
 }
 
 void Ice::use(ICharacter& target)

@@ -39,5 +39,5 @@ void	Cure::use(ICharacter& target)
 
 Cure* Cure::clone() const
 {
-	return new Cure{*this};
+	return new Cure(*this); // copy constructor using the instance obtained through dereference
 }
