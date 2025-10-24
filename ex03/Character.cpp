@@ -23,6 +23,11 @@ Character::Character(const Character& other)
 	//means we need to have a separate memory space or 
 	// pointer for the other memory.
 	//another name as well. 
+	for (int i = 0; i < 4; ++i)
+	{
+		delete other.inventory[i];
+	}
+
 	
 
 
@@ -32,7 +37,7 @@ Character& Character::operator=(const Character& other)
 {
 	if (this != &other)
 	{
-		AMateria *inventory[4] = new 
+		
 	}
 }
 

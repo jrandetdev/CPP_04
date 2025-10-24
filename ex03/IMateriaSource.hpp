@@ -25,7 +25,7 @@
 class IMateriaSource
 {
 	public:
-		virtual ~IMateriaSource() {};
+		virtual ~IMateriaSource() {}; //this forces me to make the destructor of the class 
 		virtual void learnMateria(AMateria*) = 0;
 		virtual AMateria* createMateria(std::string const & type) = 0;
 } ;
