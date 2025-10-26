@@ -16,4 +16,5 @@ class Floor
 		~Floor();
 };
 
-#endif;
+#endif
+

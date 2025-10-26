@@ -4,6 +4,7 @@
 // If I did inventory = new AMateria[4] it would block 
 Character::Character() : ICharacter()
 {
+	this->name = "";
 	for (int i = 0; i < 4; ++i)
 	{
 		inventory[i] = NULL;
@@ -11,24 +12,30 @@ Character::Character() : ICharacter()
 	std::cout << "Character:: Default character called" << std::endl;
 }
 
-Character::Character(std::string& const name)
+Character::Character(std::string const name)
 {
 	this->name = name;
+	for (int i = 0; i < 4; ++i)
+	{
+		inventory[i] = NULL;
+	}
 	std::cout << "Character:: constructor called for " << this->name << std::endl;
 }
 
-Character::Character(const Character& other)
+Character::Character(Character const & other) : ICharacter(other), name(other.name)
 {
 	//Character has a deep copy of it?
 	//means we need to have a separate memory space or 
 	// pointer for the other memory.
-	//another name as well. 
+
 	for (int i = 0; i < 4; ++i)
 	{
-		delete other.inventory[i];
+		if (other.inventory[i])
+			inventory[i] = other.inventory[i]->clone();
+		else
+			inventory[i] = NULL;
 	}
 
-	
 
 
 }
@@ -37,8 +44,9 @@ Character& Character::operator=(const Character& other)
 {
 	if (this != &other)
 	{
-		
+		this->name = other.name;
 	}
+	return (*this);
 }
 
 Character::~Character()
@@ -73,14 +81,16 @@ void Character::equip(AMateria* m)
 			i++;
 		return ;
 	}
+	(void)m;
 }
 
 void Character::unequip(int idx) // will use the idex of the inventory
 {
-
+	(void)idx;
 }
 
 void Character::use(int idx, ICharacter& target)
 {
-
+	(void)target;
+	(void)idx;
 }

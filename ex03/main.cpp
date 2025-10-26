@@ -8,5 +8,6 @@
  */
 int main()
 {
-	AMateria *test = new Ice();
+	//AMateria *test = new Ice();
 }
+

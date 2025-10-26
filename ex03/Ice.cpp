@@ -26,7 +26,7 @@ Ice::~Ice()
 	std::cout << "Ice:: Default destructor called" << std::endl;
 }
 
-Ice* Ice::clone() const
+AMateria* Ice::clone() const
 {
 	return new Ice(*this); // copy constructor using the instance obtained through dereference
 }

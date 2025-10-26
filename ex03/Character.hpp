@@ -1,5 +1,12 @@
+#ifndef CHARACTER_HPP
+# define CHARACTER_HPP
+
 #include "AMateria.hpp"
 #include "ICharacter.hpp"
+#include <iostream>
+#include <string>
+
+
 
 /**
  * @brief Character class implements the ICharacter interface. 
@@ -21,12 +28,14 @@ class Character : public ICharacter
 		std::string name;
 	public:
 		Character();
-		Character(std::string& const name);
+		Character(std::string const name);
 		Character(const Character& other);
 		Character& operator=(const Character& other);
-		~Character();
-		std::string const & getName() const;
-		void equip(AMateria* m);
-		void unequip(int idx); // will use the idex of the inventory
-		void use(int idx, ICharacter& target);
-}
+		virtual ~Character();
+		virtual std::string const & getName() const;
+		virtual void equip(AMateria* m);
+		virtual void unequip(int idx); // will use the idex of the inventory
+		virtual void use(int idx, ICharacter& target);
+};
+
+#endif

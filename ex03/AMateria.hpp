@@ -11,7 +11,6 @@
 #define RESET   "\033[0m"		/* Reset */
 #define MAG		"\033[35m"
 
-
 class AMateria
 {
 	protected:
@@ -38,7 +37,7 @@ class AMateria
 		 * 			enabling polymorphism copying. Each derived class must override this function to return
 		 * 			a deep copy of itself, using the copy constructor with *this.
 		 */
-		virtual AMateria* AMateria::clone() const = 0;
+		virtual AMateria* clone() const = 0;
 		/**
 		 * @brief virtual function to be overriden by Ice and Cure
 		 * @param target a reference to the base class ICharacter 
@@ -46,6 +45,7 @@ class AMateria
 		 */
 		virtual void use(ICharacter& target);
 		virtual ~AMateria();
-}
+};
 
 #endif
+

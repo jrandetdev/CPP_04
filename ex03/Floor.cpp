@@ -34,6 +34,7 @@ Floor& Floor::operator=(const Floor& other)
 {
 	if (this != &other)
 	{
-
+		return (*this);
 	}
+	return (*this);
 }

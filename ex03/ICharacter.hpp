@@ -1,7 +1,12 @@
-#ifndef CHARACTER_HPP
-# define CHARACTER_hpp
+#ifndef ICHARACTER_HPP
+# define ICHARACTER_HPP
 
-#include "AMateria.hpp"
+#include <string>
+
+//#include "AMateria.hpp"
+
+class AMateria; // here only a pointer is needed, so no need for the complete definition
+//Sufficient because we ony use pointers
 
 /**
  * @brief contract with the derived classes that they need 

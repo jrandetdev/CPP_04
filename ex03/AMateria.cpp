@@ -3,7 +3,7 @@
 AMateria::AMateria()
 {
 	// Zero initialisation 
-	type = {};
+	type = "";
 	std::cout << GREEN << "AMateria:: Default constructor called" << RESET << std::endl;
 }
 
@@ -30,10 +30,12 @@ AMateria& AMateria::operator=(const AMateria& other)
 
 void	AMateria::use(ICharacter& target)
 {
+	(void)target;
 	std::cout << "Amateria:: base spell used, no power..." << std::endl;
 }
 
 AMateria::~AMateria()
 {
+	
 	std::cout << RED << "AMateria:: default destructor called" << RESET << '\n';
 }
