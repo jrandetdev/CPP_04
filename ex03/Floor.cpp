@@ -4,7 +4,7 @@ Floor::Floor() : currentIndex(0)
 {
 	for (int i = 0; i < 100; ++i)
 	{
-		floor[i] = NULL;
+		floor[i] = 0;
 	}
 	std::cout << "Floor:: Default constructor called" << '\n';
 }
@@ -36,7 +36,7 @@ Floor::~Floor()
 		if (floor[i])
 		{
 			delete floor[i];
-			floor[i] = NULL;
+			floor[i] = 0;
 		}
 	}
 	std::cout << "Floor:: Default destructor called" << '\n';

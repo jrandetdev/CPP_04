@@ -4,7 +4,7 @@ Character::Character() : ICharacter(), name("")
 {
 	for (int i = 0; i < 4; ++i)
 	{
-		inventory[i] = NULL;
+		inventory[i] = 0;
 	}
 	std::cout << "Character:: Default character called" << std::endl;
 }
@@ -13,7 +13,7 @@ Character::Character(std::string const name) : name(name)
 {
 	for (int i = 0; i < 4; ++i)
 	{
-		inventory[i] = NULL;
+		inventory[i] = 0;
 	}
 	std::cout << "Character:: constructor called for " << this->name << std::endl;
 }
@@ -31,7 +31,7 @@ Character::Character(Character const & other) : name(other.name)
 		if (other.inventory[i])
 			inventory[i] = other.inventory[i]->clone(); // clone function returns a new pointer 
 		else
-			inventory[i] = NULL;
+			inventory[i] = 0;
 	}
 }
 
@@ -68,7 +68,7 @@ void Character::equip(AMateria* m)
 	}
 	for (int i = 0; i < 4; ++i)
 	{
-		if (this->inventory[i] == NULL)
+		if (this->inventory[i] == 0)
 		{
 			this->inventory[i] = m;
 		}
@@ -104,6 +104,7 @@ void Character::unequip(int idx)
 	if (inventory[idx])
 	{
 		floorPtr->fillFloor(inventory[idx]);
+		inventory[idx] = 0;
 	}
 	else
 	{

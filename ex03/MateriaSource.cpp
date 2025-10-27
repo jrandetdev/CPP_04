@@ -26,7 +26,7 @@ MateriaSource::~MateriaSource()
 		if (materia_recipes[i])
 		{
 			delete materia_recipes[i];
-			materia_recipes[i] = NULL;
+			materia_recipes[i] = 0;
 		}
 	}
 }
@@ -39,7 +39,7 @@ void MateriaSource::learnMateria(AMateria* m)
 		return ;
 	for (int i = 0; i < 4; ++i)
 	{
-		if (this->materia_recipes[i] == NULL)
+		if (this->materia_recipes[i] == 0)
 		{
 			this->materia_recipes[i] = m;
 		}
