@@ -1,40 +1,43 @@
 #include "Floor.hpp"
 
-Floor::Floor()
+Floor::Floor() : currentIndex(0)
 {
 	for (int i = 0; i < 100; ++i)
 	{
-		floor_storage[i] = NULL;
+		floor[i] = NULL;
 	}
-	std::cout << "Floor: default constructor called" << std::endl;
+	std::cout << "Floor:: Default constructor called" << '\n';
 }
 
-Floor::Floor(const Floor& other)
+Floor *Floor::getInstance()
 {
-	// The default constructor is not called automatically when the copy const is called
-	
-	
-	
+	if (!(instancePtr))
+	{
+		std::cout << "entered the function haha" << std::endl;
+		instancePtr = new Floor();
+	}
+	return (instancePtr);
+}
+
+void	Floor::fillFloor(AMateria* m)
+{
+	currentIndex++;
+	if (currentIndex > 99)
+		delete floor[currentIndex % 100];
+	floor[currentIndex % 100] = m;
+	std::cout << "Floor:: Character dropped his " << m->getType() << " Materia" \
+			" on the floor." << '\n';
+}
+
+Floor::~Floor()
+{
 	for (int i = 0; i < 100; ++i)
 	{
-		// first need to check if the other pointer to a materia is valid
-		if (other.floor_storage[i] != NULL)
+		if (floor[i])
 		{
-			// this line is wrong but I kept it for learning purpose. this just assigns
-			// pointers from one array to anothe but this is a shallow copy.
-			// It would mean both floor arrays point to the same AMateria objects in memory
-			// It would cause a double deletion of a materia Ice at address 0x2000
-			// If floor2 deletes, then floor1 would delete too.
-			//this->floor_storage[i] = other.floor_storage[i];
+			delete floor[i];
+			floor[i] = NULL;
 		}
 	}
-}
-
-Floor& Floor::operator=(const Floor& other)
-{
-	if (this != &other)
-	{
-		return (*this);
-	}
-	return (*this);
+	std::cout << "Floor:: Default destructor called" << '\n';
 }

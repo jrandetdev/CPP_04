@@ -30,12 +30,15 @@ AMateria& AMateria::operator=(const AMateria& other)
 
 void	AMateria::use(ICharacter& target)
 {
-	(void)target;
 	std::cout << "Amateria:: base spell used, no power..." << std::endl;
+}
+
+std::string const & AMateria::getType() const
+{
+	return (this->type);
 }
 
 AMateria::~AMateria()
 {
-	
 	std::cout << RED << "AMateria:: default destructor called" << RESET << '\n';
 }

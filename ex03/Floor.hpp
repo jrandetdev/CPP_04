@@ -1,20 +1,22 @@
 #ifndef FLOOR_HPP
 # define FLOOR_HPP
 
-#include <iostream> 
-#include <string>
 #include "AMateria.hpp"
 
 class Floor
 {
-	protected:
-		AMateria *floor_storage[100];
-	public:
+	private:
 		Floor();
-		Floor(const Floor& other);
-		Floor& operator=(const Floor& other);
 		~Floor();
+		static Floor *instancePtr;
+	protected:
+		AMateria *floor[100];
+		int currentIndex;
+	public:
+		static Floor *getInstance();
+		void	fillFloor(AMateria* m);
 };
 
-#endif
+//Floor* Floor::instancePtr = 0;
 
+#endif

@@ -7,7 +7,10 @@ MateriaSource::MateriaSource()
 
 MateriaSource::MateriaSource(const MateriaSource& other)
 {
-	(void)other;
+	for (int i = 0; i < 4; ++i)
+	{
+		this->materia_recipes[i] = other.materia_recipes[i]->clone();
+	}
 }
 
 MateriaSource& MateriaSource::operator=(const MateriaSource& other)
@@ -17,13 +20,6 @@ MateriaSource& MateriaSource::operator=(const MateriaSource& other)
 }
 
 MateriaSource::~MateriaSource()
-{
-
-}
-
-/// @brief not sure yet
-/// @param  
-void MateriaSource::learnMateria(AMateria*)
 {
 	for (int i = 0; i < 4; ++i)
 	{
@@ -35,8 +31,22 @@ void MateriaSource::learnMateria(AMateria*)
 	}
 }
 
-// AMateria* MateriaSource::createMateria(std::string const & type)
-// {
-// 	(void)type;
-// 	return (this);
-// }
+/// @brief not sure yet
+/// @param  
+void MateriaSource::learnMateria(AMateria* m)
+{
+	if (!m)
+		return ;
+	for (int i = 0; i < 4; ++i)
+	{
+		if (this->materia_recipes[i] == NULL)
+		{
+			this->materia_recipes[i] = m;
+		}
+	}
+}
+
+AMateria* MateriaSource::createMateria(std::string const & type)
+{
+	
+}

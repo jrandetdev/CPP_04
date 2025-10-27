@@ -6,7 +6,7 @@
 #include <iostream>
 #include <string>
 
-
+class Floor;
 
 /**
  * @brief Character class implements the ICharacter interface. 
@@ -26,7 +26,8 @@ class Character : public ICharacter
 	 */
 		AMateria *inventory[4]; // pointer to pointer of materia 
 		std::string name;
-	public:
+		Floor *floorPtr;
+		public:
 		Character();
 		Character(std::string const name);
 		Character(const Character& other);
@@ -36,6 +37,7 @@ class Character : public ICharacter
 		virtual void equip(AMateria* m);
 		virtual void unequip(int idx); // will use the idex of the inventory
 		virtual void use(int idx, ICharacter& target);
+		bool	is_valid_idx(int idx);
 };
 
 #endif

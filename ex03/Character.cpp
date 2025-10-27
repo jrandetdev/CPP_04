@@ -1,10 +1,7 @@
 #include "Character.hpp"
-
-//you cannot instantiate or implement it withut instructions #
-// If I did inventory = new AMateria[4] it would block 
-Character::Character() : ICharacter()
+#include "Floor.hpp"
+Character::Character() : ICharacter(), name("")
 {
-	this->name = "";
 	for (int i = 0; i < 4; ++i)
 	{
 		inventory[i] = NULL;
@@ -12,9 +9,8 @@ Character::Character() : ICharacter()
 	std::cout << "Character:: Default character called" << std::endl;
 }
 
-Character::Character(std::string const name)
+Character::Character(std::string const name) : name(name)
 {
-	this->name = name;
 	for (int i = 0; i < 4; ++i)
 	{
 		inventory[i] = NULL;
@@ -22,22 +18,21 @@ Character::Character(std::string const name)
 	std::cout << "Character:: constructor called for " << this->name << std::endl;
 }
 
-Character::Character(Character const & other) : ICharacter(other), name(other.name)
+/**
+ * @brief copy constructor of Character class, performs a Deep copy of the character
+ * 
+ * Using the clone function to create a new clone of the derived Materia.
+ * 
+ */
+Character::Character(Character const & other) : name(other.name)
 {
-	//Character has a deep copy of it?
-	//means we need to have a separate memory space or 
-	// pointer for the other memory.
-
 	for (int i = 0; i < 4; ++i)
 	{
 		if (other.inventory[i])
-			inventory[i] = other.inventory[i]->clone();
+			inventory[i] = other.inventory[i]->clone(); // clone function returns a new pointer 
 		else
 			inventory[i] = NULL;
 	}
-
-
-
 }
 
 Character& Character::operator=(const Character& other)
@@ -49,11 +44,6 @@ Character& Character::operator=(const Character& other)
 	return (*this);
 }
 
-Character::~Character()
-{
-	//meaning when we delete character, we will need to make a separate pointe
-
-}
 
 std::string const & Character::getName() const
 {
@@ -63,34 +53,73 @@ std::string const & Character::getName() const
 /**
  * @brief equip in the first empty slot they find from slot 0 to 3
  * 
- * if the inventory is full, 
+ * Invariants:
+ * 
+ * - Valid Materia, if not ice or cure it will return and nothing will happen.
+ * 
+ * - Free space in inventory, if full, it will return and nothing will happen.
  */
 void Character::equip(AMateria* m)
 {
-	//checks to do: if valie materia pointer,
-	// if available space
-	// 
-	//equip you need to see if there is still space
-	//how to check if there is space?
-	int i = 0;
-	while (inventory[i])
+	if (m->getType() != "ice" && m->getType() != "cure")
 	{
-		if (inventory[i] == NULL)
-			inventory[i] = m;
-		else
-			i++;
+		std::cout << RED << "Error! Character:: cannot equip a Materia other than ice or cure." << RESET << '\n';
 		return ;
 	}
-	(void)m;
+	for (int i = 0; i < 4; ++i)
+	{
+		if (this->inventory[i] == NULL)
+		{
+			this->inventory[i] = m;
+		}
+		else if ((i == 4) && (this->inventory[i]))
+		{
+			std::cout << RED << "Error! Character:: inventory is full! No more space, please unequip \
+			if you wish to add this Materia to " << this->getName() << "'s inventory." \
+			RESET << std::endl;
+			return ;
+		}
+	}
 }
 
-void Character::unequip(int idx) // will use the idex of the inventory
+bool	Character::is_valid_idx(int idx)
 {
-	(void)idx;
+	if (0 <= idx && idx <= 3)
+		return true;
+	return false;
+}
+
+/**
+ * @brief The unequip() function cannot unequip an innexisting materia.
+ * 
+ * The unequip function must not delete the Materia.
+ */
+void Character::unequip(int idx)
+{
+	if (!(is_valid_idx(idx)))
+	{
+		std::cout << "Character:: inventory index is between 0 and 3." << '\n';
+		return ;
+	}
+	if (inventory[idx])
+	{
+		floorPtr->fillFloor(inventory[idx]);
+	}
+	else
+	{
+		std::cout << RED << "Error! Inventory slot is empty, no Materia to put on the floor." << RESET << '\n';
+		return ;
+	}
 }
 
 void Character::use(int idx, ICharacter& target)
 {
 	(void)target;
 	(void)idx;
+	//delete the materia in inventory after use
+}
+
+Character::~Character()
+{
+	std::cout << "Character:: Default destructor called." << std::endl;
 }
