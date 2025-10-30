@@ -30,31 +30,71 @@
  */
 int main()
 {
-	{	// use the operator new to request memory from the free store (heap)
-
-		const Animal* meta = new Animal();
-		const Animal* j = new Dog();
-		const Animal* i = new Cat();
-		std::cout << "the type of the first animal is " << j->getType() << " " << std::endl;
-		std::cout << "the type of the second animal is" << i->getType() << " " << std::endl;
-		std::cout << "Dog makes the following sound" << '\n';
-		i->makeSound();
-		std::cout << "Dog makes the following sound" << '\n';
-		j->makeSound();
-		meta->makeSound();
-		delete(i);
-		delete(j);
-		delete(meta);
-	}
-	std::cout << '\n' << '\n';
-	{
-		const WrongAnimal *metawrong = new WrongAnimal();
-		const WrongAnimal *metacat = new WrongCat();
-		std::cout << "the type of the first animal is " << metawrong->getType() << std::endl;
-		std::cout << "the type of the first animal is " << metacat->getType() << std::endl;
-		metawrong->makeSound();
-		metacat->makeSound();
-		delete(metacat); //delete does not delete memory, it simply returns it to the heap
-		delete(metawrong);
-	}
+    // ===================================================================
+    // SECTION 1: Demonstrating Correct Polymorphism (Virtual Functions)
+    // ===================================================================
+    {
+        std::cout << "=== Testing Polymorphism with Virtual Functions ===\n\n";
+        
+        const Animal* meta = new Animal();
+        const Animal* cat = new Cat();
+        const Animal* dog = new Dog();
+        
+        // Display types
+        std::cout << "Object types:\n";
+        std::cout << "  - dog->getType(): " << dog->getType() << '\n';
+        std::cout << "  - cat->getType(): " << cat->getType() << '\n';
+        std::cout << "  - meta->getType(): " << meta->getType() << '\n';
+        std::cout << '\n';
+        
+        // Demonstrate polymorphic behavior
+        std::cout << "Sounds produced (via base class pointers):\n";
+        std::cout << "  Cat: ";
+        cat->makeSound();
+        
+        std::cout << "  Dog: ";
+        dog->makeSound();
+        
+        std::cout << "  Animal: ";
+        meta->makeSound();
+        
+        std::cout << '\n';
+        
+        // Clean up
+        delete cat;
+        delete dog;
+        delete meta;
+    }
+    
+    std::cout << "\n";
+    
+    // ===================================================================
+    // SECTION 2: Demonstrating Incorrect Behavior (Non-Virtual Functions)
+    // ===================================================================
+    {
+        std::cout << "=== Testing WITHOUT Virtual Functions (Wrong Behavior) ===\n\n";
+        
+        const WrongAnimal* wrongAnimal = new WrongAnimal();
+        const WrongAnimal* wrongCat = new WrongCat();
+        
+        std::cout << "Object types:\n";
+        std::cout << "  - wrongAnimal->getType(): " << wrongAnimal->getType() << '\n';
+        std::cout << "  - wrongCat->getType(): " << wrongCat->getType() << '\n';
+        std::cout << '\n';
+        
+        std::cout << "Sounds produced (static binding - notice the problem):\n";
+        std::cout << "  WrongAnimal: ";
+        wrongAnimal->makeSound();
+        
+        std::cout << "  WrongCat (but calls WrongAnimal's sound!): ";
+        wrongCat->makeSound();
+        
+        std::cout << '\n';
+        
+        // Clean up - returns memory to the free store
+        delete wrongCat;
+        delete wrongAnimal;
+    }
+    
+    return 0;
 }
