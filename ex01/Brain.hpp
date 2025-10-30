@@ -19,7 +19,7 @@ class Brain
 		Brain& operator=(const Brain& other);
 		~Brain();
 		void	setIdea(const std::string& idea, int i);
-		//const std::string getIdea(void); 
+		const std::string getIdea(int i); 
 };
 
 #endif

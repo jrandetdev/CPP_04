@@ -7,7 +7,7 @@ Dog::Dog() : A_Animal()
 	std::cout << GREEN << "Dog:: Derived class default constructor called" << RESET << '\n';
 }
 
-Dog::Dog(const Dog& other) : A_Animal(other)
+Dog::Dog(const Dog& other) : A_Animal(other), dog_brain(new Brain(*(other.dog_brain)))
 {
 	std::cout << "Dog:: Derived class copy constructor called" << '\n';
 }
@@ -17,6 +17,7 @@ Dog& Dog::operator=(const Dog& other)
 	if (this != &other)
 	{
 		A_Animal::operator=(other);
+		*(this->dog_brain) = *(other.dog_brain);
 		std::cout << RED << "Dog:: Derived class copy assignment called" << RESET << '\n';
 	}
 	return (*this);
@@ -31,4 +32,14 @@ Dog::~Dog()
 void	Dog::makeSound(void) const
 {
 	std::cout << BLUE << "Wouf" <<  RESET << '\n';
+}
+
+void	Dog::setIdea(const std::string& idea, int i)
+{
+	dog_brain->setIdea(idea, i);
+}
+
+const std::string Dog::getIdea(int i)
+{
+	return (dog_brain->getIdea(i));
 }

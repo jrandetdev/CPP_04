@@ -2,6 +2,10 @@
 
 Brain::Brain()
 {
+  for (int i = 0; i < 100; ++i)
+  {
+    this->ideas[i] = "sleeping";
+  }
   std::cout << "Brain:: Default constructor called." << '\n';
 }
 
@@ -34,4 +38,10 @@ Brain::~Brain()
 void	Brain::setIdea(const std::string& idea, int i)
 {
   this->ideas[i] = idea;
+}
+
+const std::string Brain::getIdea(int i)
+{
+  //std::cout << "index sent to getIdea is " << i << "and idea is " << this->ideas[i] << '\n';
+  return this->ideas[i];
 }
