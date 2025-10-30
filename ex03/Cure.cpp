@@ -8,13 +8,14 @@
  */
 Cure::Cure() : AMateria()
 {
-	std::cout << "Cure:: Default constructor called" << std::endl;
+	this->type = "cure";
+	//std::cout << "Cure:: Default constructor called" << std::endl;
 }
 
 Cure::Cure(const Cure& other) : AMateria("cure")
 {
 	(void)other;
-	std::cout << "Cure:: Copy constructor called" << std::endl;
+	//std::cout << "Cure:: Copy constructor called" << std::endl;
 }
 
 Cure& Cure::operator=(const Cure& other)
@@ -28,7 +29,12 @@ Cure& Cure::operator=(const Cure& other)
 
 Cure::~Cure()
 {
-	std::cout << "Cure:: Default destructor called" << std::endl;
+	//std::cout << "Cure:: Default destructor called" << std::endl;
+}
+
+AMateria* Cure::clone() const
+{
+	return new Cure(*this); // copy constructor using the instance obtained through dereference
 }
 
 // 
@@ -37,7 +43,3 @@ void	Cure::use(ICharacter& target)
 	std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
 }
 
-AMateria* Cure::clone() const
-{
-	return new Cure(*this); // copy constructor using the instance obtained through dereference
-}

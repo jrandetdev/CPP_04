@@ -2,14 +2,15 @@
 
 Ice::Ice() : AMateria()
 {
-	std::cout << "Ice:: Default constructor called" << std::endl;
+	this->type = "ice";
+	//std::cout << "Ice:: Default constructor called" << std::endl;
 }
 
 // Start by creating the base class of Ice (AMateria)
 Ice::Ice(const Ice& other) : AMateria("ice")
 {
 	(void)other;
-	std::cout << "Ice:: Copy constructor called" << std::endl;
+//	std::cout << "Ice:: Copy constructor called" << std::endl;
 }
 
 Ice& Ice::operator=(const Ice& other)
@@ -23,7 +24,7 @@ Ice& Ice::operator=(const Ice& other)
 
 Ice::~Ice()
 {
-	std::cout << "Ice:: Default destructor called" << std::endl;
+	//std::cout << "Ice:: Default destructor called" << std::endl;
 }
 
 AMateria* Ice::clone() const

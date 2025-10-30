@@ -4,33 +4,30 @@ AMateria::AMateria()
 {
 	// Zero initialisation 
 	type = "";
-	std::cout << GREEN << "AMateria:: Default constructor called" << RESET << std::endl;
+	//std::cout << GREEN << "AMateria:: Default constructor called" << RESET << std::endl;
 }
 
 AMateria::AMateria(std::string const & type)
 {
 	this->type = type;
-	std::cout << GREEN << "AMateria:: constructor called with type" << RESET << '\n';
+	//std::cout << GREEN << "AMateria:: constructor called with type" << RESET << '\n';
 }
 
-AMateria::AMateria(const AMateria& other)
+AMateria::AMateria(const AMateria& other) : type(other.type)
 {
-	this->type = other.type;
-	std::cout << GREEN << "AMateria:: Copy constructor called with type" << RESET << '\n';
+	//std::cout << GREEN << "AMateria:: Copy constructor called." << RESET << '\n';
 }
 
 AMateria& AMateria::operator=(const AMateria& other)
 {
-	if (this != &other)
-	{
-		//it says that copying the type does not make sense
-	}
+	(void)other;
 	return (*this);
 }
 
 void	AMateria::use(ICharacter& target)
 {
-	std::cout << "Amateria:: base spell used, no power..." << std::endl;
+	std::cout << "Amateria:: base spell used, no power on " << target.getName()
+			<< " ..." << std::endl;
 }
 
 std::string const & AMateria::getType() const
@@ -40,5 +37,5 @@ std::string const & AMateria::getType() const
 
 AMateria::~AMateria()
 {
-	std::cout << RED << "AMateria:: default destructor called" << RESET << '\n';
+	//std::cout << RED << "AMateria:: default destructor called" << RESET << '\n';
 }

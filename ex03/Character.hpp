@@ -26,8 +26,8 @@ class Character : public ICharacter
 	 */
 		AMateria *inventory[4]; // pointer to pointer of materia 
 		std::string name;
-		Floor *floorPtr;
-		public:
+
+	public:
 		Character();
 		Character(std::string const name);
 		Character(const Character& other);

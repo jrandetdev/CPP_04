@@ -6,27 +6,28 @@ Floor::Floor() : currentIndex(0)
 	{
 		floor[i] = 0;
 	}
-	std::cout << "Floor:: Default constructor called" << '\n';
+	//std::cout << "Floor:: Default constructor called" << '\n';
 }
 
-Floor *Floor::getInstance()
+Floor &Floor::getInstance()
 {
-	if (!(instancePtr))
-	{
-		std::cout << "entered the function haha" << std::endl;
-		instancePtr = new Floor();
-	}
+	static Floor instancePtr;
+	
 	return (instancePtr);
 }
 
 void	Floor::fillFloor(AMateria* m)
 {
+	std::cout << "entered fillfloor function" << '\n';
+	if (!m)
+		return ;
 	currentIndex++;
 	if (currentIndex > 99)
 		delete floor[currentIndex % 100];
 	floor[currentIndex % 100] = m;
 	std::cout << "Floor:: Character dropped his " << m->getType() << " Materia" \
 			" on the floor." << '\n';
+	std::cout << "character has dropped on the floor" << '\n';
 }
 
 Floor::~Floor()
@@ -39,5 +40,5 @@ Floor::~Floor()
 			floor[i] = 0;
 		}
 	}
-	std::cout << "Floor:: Default destructor called" << '\n';
+	//std::cout << "Floor:: Default destructor called" << '\n';
 }
