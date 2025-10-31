@@ -101,13 +101,9 @@ void invalid_arguments_test()
 
 int main()
 {
-    // Floor    *floor;
-
-    // floor = Floor::getInstance();
-    // subject_provided_test();
-    //copy_constructor_test();
-    // assignment_operator_test();
-    // invalid_arguments_test();
-    // delete floor;
+    subject_provided_test();
+    copy_constructor_test();
+    assignment_operator_test();
+    invalid_arguments_test();
     return 0;
 }
